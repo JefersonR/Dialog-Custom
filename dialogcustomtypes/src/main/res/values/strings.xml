@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DialogLibrary</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="txt_sucess">Success</string>
+    <string name="txt_error">Error</string>
+    <string name="txt_info">Information</string>
+</resources>

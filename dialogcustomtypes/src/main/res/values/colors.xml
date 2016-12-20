@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="pink">#E4224A</color>
+    <color name="dark_pink_status_bar">#cd1f42</color>
+    <color name="blue_facebook">#405F9E</color>
+    <color name="orange_gplus">#DF4A32</color>
+    <color name="orange_light">#80DF4A32</color>
+    <color name="light_gray_line">#E5E5E5</color>
+    <color name="yellow_promo">#ffb331</color>
+    <color name="yellow_promo_dark">#FFA97721</color>
+    <color name="dark_pink">#961A32</color>
+    <color name="dark_gray_text">#353535</color>
+    <color name="light_gray_text">#666666</color>
+    <color name="darker_gray">#555555</color>
+    <color name="light_pink">#FFE6EB</color>
+    <color name="pink_card">#EEE7E9</color>
+    <color name="light_pink_alpha">#80FFE6EB</color>
+    <color name="light_pink_text">#EC7286</color>
+    <color name="gray_text">#999999</color>
+    <color name="gray_text_light">#ababab</color>
+    <color name="gray_view_light">#99999999</color>
+    <color name="red_text">#DA0B2A</color>
+    <color name="light_gray_text_week">#CCCCCC</color>
+    <color name="light_gray_background">#FFF5F1EF</color>
+    <color name="green">#1AE524</color>
+    <color name="green_dark">#14a91b</color>
+    <color name="green_lock">#b3ffde</color>
+    <color name="green_lock_text">#729e8b</color>
+    <color name="green_lock_alpha">#80b3ffde</color>
+    <color name="greyDark">#525252</color>
+    <color name="greyLight">#f9f9f9</color>
+    <color name="gray_lines">#E8E8E8</color>
+    <color name="gray_view_light_alpha">#80E8E8E8</color>
+    <color name="light_gray_services">#92404040</color>
+    <color name="bg_black_translucent">#B3000000</color>
+
+    <color name="blue_btn_bg_color">#EC7286</color>
+    <color name="blue_btn_bg_pressed_color">#c25e6f</color>
+    <color name="gray_btn_bg_color">#961A32</color>
+
+
+</resources>
