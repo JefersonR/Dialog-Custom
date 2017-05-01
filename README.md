@@ -13,10 +13,12 @@ Usage:
 		}
 	}
 </br>
-<br>2 - Add the dependency
+<br>2 - Add the dependency 
+<br>
 	dependencies {
 		compile 'com.github.JefersonR:Dialog-Custom:1'
 	}
+ </br>
  </br>
 
 ![alt text](https://cloud.githubusercontent.com/assets/7682297/25589547/66a47526-2e83-11e7-814a-d52abeedab7a.png)
