@@ -4,4 +4,9 @@
     <string name="txt_sucess">Success</string>
     <string name="txt_error">Error</string>
     <string name="txt_info">Information</string>
+    <string name="confirm">Confirmar</string>
+    <string name="confirm_cancel">Confirmar/Cancelar</string>
+    <string name="sucess">Sucesso</string>
+    <string name="error">Erro</string>
+    <string name="info">Informação</string>
 </resources>
