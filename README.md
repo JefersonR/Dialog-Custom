@@ -6,18 +6,18 @@ Project and Lib android.
 Usage:
 
 1 - Add it in your root build.gradle at the end of repositories:
-allprojects {
+<br>allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-  
-2 - Add the dependency
+</br>
+<br>2 - Add the dependency
 	dependencies {
 		compile 'com.github.JefersonR:Dialog-Custom:1'
 	}
-
+ </br>
 
 ![alt text](https://cloud.githubusercontent.com/assets/7682297/25589547/66a47526-2e83-11e7-814a-d52abeedab7a.png)
 
