@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 /**
- * Created by je212 on 18/11/2016.
+ * Created by jeferson on 18/11/2016.
  */
 public class DialogCustomUtil {
 

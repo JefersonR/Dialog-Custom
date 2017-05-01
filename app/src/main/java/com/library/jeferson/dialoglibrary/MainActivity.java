@@ -1,31 +1,35 @@
 package com.library.jeferson.dialoglibrary;
 
+
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 
 import com.library.jeferson.dialogcustomtypes.DialogCustomUtil;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private Dialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
 
-        DialogCustomUtil.dialog(MainActivity.this, DialogCustomUtil.Type.CONFIRM,"DEU CERTO","BELEZA uhauhsu hauhs au hs ajksh ajkhsaui hskj ah shaks kajhsk nakjshakuj sa","OK","CANCELAR",
+        dialog = DialogCustomUtil.dialog(MainActivity.this, DialogCustomUtil.Type.CONFIRM, "OK", "Parabéns", "OK", "CANCELAR",
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Log.e("TESTE", "LEGAL");
+                        dialog.dismiss();
                     }
-                },new View.OnClickListener() {
+                }, new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Log.e("TESTE 2", "LEGAL 3");
+                        dialog.dismiss();
                     }
-                }).show();
+                });
+        dialog.show();
     }
 }
