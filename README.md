@@ -1,4 +1,4 @@
-Custom dialog android.
+#### Description
 
 Project and Lib android.  
 
