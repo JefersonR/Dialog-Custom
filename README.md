@@ -1,9 +1,26 @@
-# Dialog-Custom
-Custom dialog android.
+#### Description
 
-Project and Lib android.
+Project and Lib android.  
 
+#### Usage:
 
+> 1 - Add it in your root build.gradle at the end of repositories:
+> ```
+> allprojects {
+>    repositories {
+>      ...
+>      maven { url 'https://jitpack.io' }
+>    }
+> }
+> ```
+> 2 - Add the dependency 
+> ```
+> dependencies {
+>   compile 'com.github.JefersonR:Dialog-Custom:1'
+>}
+> ```
+
+#### Prints:
 ![alt text](https://cloud.githubusercontent.com/assets/7682297/25589547/66a47526-2e83-11e7-814a-d52abeedab7a.png)
 
 ![alt text](https://cloud.githubusercontent.com/assets/7682297/25589546/66a3be7e-2e83-11e7-99b7-bacaa18dab1d.png)
