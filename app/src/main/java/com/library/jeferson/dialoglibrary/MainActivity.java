@@ -1,7 +1,6 @@
 package com.library.jeferson.dialoglibrary;
 
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,7 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button sucess;
     private Button error;
     private Button info;
-    private Dialog dialog;
+
 
     private void findViews() {
         confirm = (Button)findViewById( R.id.confirm );
@@ -49,42 +48,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void dialogConfirm(){
-        dialog = DialogCustomUtil.dialog(MainActivity.this, DialogCustomUtil.Type.CONFIRM, "OK", "Cadastro executado com sucesso", "OK",
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-        dialog.show();
+        DialogCustomUtil.dialog(MainActivity.this, getString(R.string.txt_title), getString(R.string.txt_message), new DialogCustomUtil.OnItemClick() {
+            @Override
+            public void onItemClick(View view) {
+                //Do something
+            }
+        });
     }
 
     public void dialogConfirmCancel(){
-        dialog = DialogCustomUtil.dialog(MainActivity.this, DialogCustomUtil.Type.CANCEL, "Excluir", "Tem certeza que deseja excluir essa informação?", "OK", "CANCELAR",
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                }, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialog.dismiss();
-                    }
-                });
-        dialog.show();
+        DialogCustomUtil.dialog(MainActivity.this, getString(R.string.txt_title), getString(R.string.txt_message), new DialogCustomUtil.OnItemClick() {
+            @Override
+            public void onItemClick(View view) {
+                //Do something
+            }
+        }, new DialogCustomUtil.OnItemClick() {
+            @Override
+            public void onItemClick(View view) {
+                //Do something
+
+            }
+        });
     }
 
     public void dialogSucess(){
-        DialogCustomUtil.dialogSucess(MainActivity.this, "Requisição executada com sucesso.").show();
+        DialogCustomUtil.dialog(MainActivity.this, getString(R.string.txt_message));
     }
 
     public void dialogError(){
-        DialogCustomUtil.dialogError(MainActivity.this, "Falha na execução da requisição.").show();
+        DialogCustomUtil.dialog(MainActivity.this, getString(R.string.txt_title), getString(R.string.txt_message),getString(R.string.txt_try_again), getString(R.string.txt_cancel), new DialogCustomUtil.OnItemClick() {
+            @Override
+            public void onItemClick(View view) {
+                //Do something
+            }
+        }, new DialogCustomUtil.OnItemClick() {
+            @Override
+            public void onItemClick(View view) {
+                //Do something
+            }
+        });
     }
-
     public void dialogInfo(){
-        DialogCustomUtil.dialogInfo(MainActivity.this, "Tem certeza que deseja continuar.").show();
+        DialogCustomUtil.dialog(MainActivity.this,getString(R.string.txt_info), getString(R.string.txt_message), getString(R.string.txt_got_it));
     }
 
 

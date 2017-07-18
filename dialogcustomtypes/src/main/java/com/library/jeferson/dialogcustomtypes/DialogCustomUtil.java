@@ -2,6 +2,8 @@ package com.library.jeferson.dialogcustomtypes;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -12,202 +14,142 @@ import android.widget.TextView;
  */
 public class DialogCustomUtil {
 
-    public enum Type {
-        CONFIRM,
-        CANCEL,
-        INFO;
-    }
+    public static Dialog dialog(final Context context, String title, String message, String labelOk, String labelCancel, boolean cancelable, final boolean hasDismiss,
+                                final boolean hasButtonOK, final boolean hasButtonCancel, final OnItemClick mItemOk, final OnItemClick mItemCancel) {
 
-    public static Dialog dialog(final Context context, Type type, String title, String message, String labelConfirmButton, final View.OnClickListener confirmButton) {
-
-        Dialog dialog = new Dialog(context, R.style.PauseDialog);
+        final Dialog dialog = new Dialog(context, R.style.MythemeDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        switch (type) {
-            case CONFIRM:
-                dialog.setContentView(R.layout.dialog_custom_scl);
-                break;
-            case CANCEL:
-                dialog.setContentView(R.layout.dialog_custom_scl_error);
-                break;
-            case INFO:
-                dialog.setContentView(R.layout.dialog_custom_scl_info);
-                break;
-            default:
-                dialog.setContentView(R.layout.dialog_custom_scl);
-                break;
-        }
+        dialog.setCancelable(cancelable);
+        dialog.setContentView(R.layout.dialog_custom_scl);
 
-        Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
-        TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
-        btnConfirm.setText(labelConfirmButton);
-        txtTitle.setText(title);
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(confirmButton);
-        return dialog;
-    }
-
-    public static Dialog dialog(final Context context, Type type, String title, String message, String labelConfirmButton, String labelCancelButton, final View.OnClickListener confirmButton, final View.OnClickListener cancelButton) {
-
-        Dialog dialog = new Dialog(context, R.style.PauseDialog);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        switch (type) {
-            case CONFIRM:
-                dialog.setContentView(R.layout.dialog_custom_scl);
-                break;
-            case CANCEL:
-                dialog.setContentView(R.layout.dialog_custom_scl_error);
-                break;
-            case INFO:
-                dialog.setContentView(R.layout.dialog_custom_scl_info);
-                break;
-            default:
-                dialog.setContentView(R.layout.dialog_custom_scl);
-                break;
-        }
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
         Button btnCancel = (Button) dialog.findViewById(R.id.btn_cancel);
         TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
+        TextView txtMsg = (TextView) dialog.findViewById(R.id.txt_msg);
 
-        btnCancel.setVisibility(View.VISIBLE);
-        btnConfirm.setText(labelConfirmButton);
-        btnCancel.setText(labelCancelButton);
-        txtTitle.setText(title);
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(confirmButton);
-        btnCancel.setOnClickListener(cancelButton);
+        setText(txtTitle, title);
+        setText(txtMsg, message);
+        setLabel(btnConfirm, labelOk);
+        setLabel(btnCancel, labelCancel);
+        buttonManager(dialog, btnConfirm, mItemOk, hasDismiss, hasButtonOK);
+        buttonManager(dialog, btnCancel, mItemCancel, hasDismiss, hasButtonCancel);
+
+        dialog.show();
         return dialog;
     }
 
+   /* return dialog( context,  title,  message,  labelOk,  labelCancel,  cancelable,   hasDismiss,
+                   hasButtonOK,  hasButtonCancel,  mItemOk, mItemCancel);*/
+
+    public static Dialog dialog(final Context context, String title, String message, final boolean dismiss, final OnItemClick mOnItemClick) {
+        return dialog(context, title, message, null, null, dismiss, false, true, false, mOnItemClick, null);
+    }
+
+    public static Dialog dialog(final Context context, String title, String message, String labelOk, String labelCancel, final OnItemClick mItemOk, final OnItemClick mItemCancel) {
+
+        return dialog( context,  title,  message,  labelOk,  labelCancel,  false,   true,
+         true,  true,  mItemOk, mItemCancel);
+    }
+
+    public static Dialog dialog(final Context context, String title, String message, String labelOk, String labelCancel, final OnItemClick mItemOk) {
+         return dialog( context,  title,  message,  labelOk,  labelCancel,  false,   true,
+                true,  false,  mItemOk, null);
+    }
+
+    public static Dialog dialog(final Context context, String message, String labelOk, String labelCancel, final OnItemClick mItemOk) {
+        return dialog( context,  null,  message,  labelOk,  labelCancel,  false,   true,
+                true,  true,  mItemOk, null);
+    }
+
+    public static Dialog dialog(final Context context, String message, final boolean hasDismiss, boolean hasButtonCancel, final OnItemClick mOnItemClick) {
+        return dialog( context,  null,  message,  null,  null,  false,   hasDismiss,
+                true,  hasButtonCancel,  mOnItemClick, null);
+    }
 
 
-    public static Dialog dialogSucess(final Context context, String message) {
+    public static Dialog dialog(final Context context, String title, String message, final boolean hasDismiss, boolean hasBtnCancel, final OnItemClick mOnItemClick) {
+        return dialog( context,  title,  message,  null,  null,  false,   hasDismiss,
+                true,  hasBtnCancel,  mOnItemClick, null);
+    }
 
-        final Dialog dialog = new Dialog(context, R.style.PauseDialog);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_custom_scl);
-        Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
-        TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
-        btnConfirm.setText("OK");
-        txtTitle.setText(context.getResources().getString(R.string.txt_sucess));
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
+
+    public static Dialog dialog(final Context context, String title, String message, final OnItemClick mOnItemClick) {
+        return dialog( context,  title,  message,  null,  null,  true,   true,
+                true,  false,  mOnItemClick, null);
+    }
+
+    public static Dialog dialog(final Context context, String title, String message, final OnItemClick mOnItemClick,final OnItemClick mItemCancel) {
+        return dialog( context,  title,  message,  null,  null,  false,   true,
+                true,  true,  mOnItemClick, mItemCancel);
+    }
+
+    public static Dialog dialog(final Context context, String title, String message, final OnItemClick mOnItemClick, boolean hasButtonCancel) {
+        return dialog( context,  title,  message,  null,  null,  false,   true,
+                true,  hasButtonCancel,  mOnItemClick, null);
+    }
+
+
+    public static Dialog dialog(final Context context, String title, String message, String labelOk) {
+        return dialog( context,  title,  message,  labelOk,  null,  true,   true,
+                true,  false, null, null);
+    }
+
+    public static Dialog dialog(final Context context, String title, String message) {
+        return dialog( context,  title,  message,  null,  null,  true,  true,
+                true,  false,  null, null);
+    }
+
+    public static Dialog dialog(final Context context, String message) {
+        return dialog( context,  null ,  message,  null,  null,  true,   true,
+                true,  false,  null, null);
+    }
+
+    public interface OnItemClick {
+        public void onItemClick(View view);
+    }
+
+    private static void buttonManager(final Dialog dialog, Button button, final OnItemClick onItemClick, final boolean hasDismiss, boolean hasButton) {
+        if (onItemClick != null) {
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClick.onItemClick(v);
+                    if (hasDismiss)
+                        dialog.dismiss();
+
+                }
+            });
+        } else if (hasButton) {
+            btnListener(dialog, button);
+        } else {
+            button.setVisibility(View.GONE);
+        }
+    }
+
+    private static void btnListener(final Dialog dialog, Button button) {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
 
             }
         });
-        return dialog;
     }
 
-    public static Dialog dialogSucess(final Context context, String title, String message) {
-
-        final Dialog dialog = new Dialog(context, R.style.PauseDialog);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_custom_scl);
-        Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
-        TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
-        btnConfirm.setText("OK");
-        txtTitle.setText(title);
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-
-            }
-        });
-        return dialog;
+    private static void setText(TextView txt, String text) {
+        if (text != null) {
+            txt.setText(text);
+        } else {
+            txt.setVisibility(View.GONE);
+        }
     }
 
 
-    public static Dialog dialogError(final Context context, String message) {
-
-        final Dialog dialog = new Dialog(context, R.style.PauseDialog);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_custom_scl_error);
-        Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
-        TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
-        btnConfirm.setText("OK");
-        txtTitle.setText(context.getResources().getString(R.string.txt_error));
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-
-            }
-        });
-        return dialog;
+    private static void setLabel(Button button, String text) {
+        if (text != null) {
+            button.setText(text);
+        }
     }
 
-    public static Dialog dialogError(final Context context, String title, String message) {
-
-        final Dialog dialog = new Dialog(context, R.style.PauseDialog);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_custom_scl_error);
-        Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
-        TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
-        btnConfirm.setText("OK");
-        txtTitle.setText(title);
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-
-            }
-        });
-        return dialog;
-    }
-
-    public static Dialog dialogInfo(final Context context, String message) {
-
-        final Dialog dialog = new Dialog(context, R.style.PauseDialog);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_custom_scl_info);
-        Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
-        TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
-        btnConfirm.setText("OK");
-        txtTitle.setText(context.getResources().getString(R.string.txt_info));
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-
-            }
-        });
-        return dialog;
-    }
-
-    public static Dialog dialogInfo(final Context context, String title, String message) {
-
-        final Dialog dialog = new Dialog(context, R.style.PauseDialog);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_custom_scl_info);
-        Button btnConfirm = (Button) dialog.findViewById(R.id.btn_send);
-        TextView txtTitle = (TextView) dialog.findViewById(R.id.txt_title);
-        TextView txt_msg = (TextView) dialog.findViewById(R.id.txt_msg);
-        btnConfirm.setText("OK");
-        txtTitle.setText(title);
-        txt_msg.setText(message);
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-
-            }
-        });
-        return dialog;
-    }
 }

@@ -4,4 +4,12 @@
     <string name="txt_sucess">Success</string>
     <string name="txt_error">Error</string>
     <string name="txt_info">Information</string>
+    <string name="icon">icone</string>
+    <string name="txt_ok">OK</string>
+    <string name="txt_message">Message</string>
+    <string name="txt_title">Title</string>
+    <string name="txt_try_again">Try again</string>
+    <string name="txt_got_it">Got it!</string>
+
+
 </resources>
