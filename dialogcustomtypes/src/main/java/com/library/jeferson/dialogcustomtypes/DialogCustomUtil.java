@@ -54,7 +54,7 @@ public class DialogCustomUtil {
 
     public static Dialog dialog(final Context context, String title, String message, String labelOk, String labelCancel, final OnItemClick mItemOk) {
          return dialog( context,  title,  message,  labelOk,  labelCancel,  false,   true,
-                true,  false,  mItemOk, null);
+                true,  true,  mItemOk, null);
     }
 
     public static Dialog dialog(final Context context, String message, String labelOk, String labelCancel, final OnItemClick mItemOk) {
