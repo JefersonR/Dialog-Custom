@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DialogLibrary</string>
+    <string name="app_name_mine">DialogLibrary</string>
     <string name="txt_cancel">Cancel</string>
     <string name="txt_sucess">Success</string>
     <string name="txt_error">Error</string>
