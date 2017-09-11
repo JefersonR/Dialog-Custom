@@ -16,7 +16,7 @@ Project and Lib android.
 > 2 - Add the dependency 
 > ```
 > dependencies {
->   compile 'com.github.JefersonR:Dialog-Custom:2'
+>   compile 'com.github.JefersonR:Dialog-Custom:2.0.1'
 >}
 > ```
 
